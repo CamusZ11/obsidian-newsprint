@@ -235,6 +235,7 @@ body {
   --radius-l: 3px;
   --tab-radius-active: 2px;
   --checkbox-radius: 2px;
+  --nav-tag-color-active: var(--nav-item-color-active);
 }
 
 body.theme-light {
@@ -253,7 +254,7 @@ body.theme-light {
   --background-modifier-cover: rgb(32 43 51 / 35%);
   --text-normal: var(--np-ink);
   --text-muted: #656565;
-  --text-faint: #777;
+  --text-faint: #6b6a65;
   --text-on-accent: #fff;
   --text-accent: #065588;
   --text-accent-hover: #03436d;
@@ -265,24 +266,31 @@ body.theme-light {
   --interactive-hover: #deddd5;
   --interactive-accent: #065588;
   --interactive-accent-hover: #03436d;
+  --background-modifier-error: #a12b3a;
+  --background-modifier-error-hover: #862332;
+  --background-modifier-success: #356b42;
+  --text-error: #a12b3a;
+  --text-success: #356b42;
   --text-selection: rgb(32 43 51 / 25%);
   --text-highlight-bg: #e9dda8;
   --blockquote-border-color: #bababa;
   --blockquote-color: #656565;
   --code-background: #dadada;
-  --code-comment: #656565;
+  --code-comment: #5f5f5f;
   --code-function: #065588;
   --code-keyword: #70495c;
   --code-string: #3e6542;
-  --code-value: #805c26;
+  --code-value: #795622;
   --code-operator: #444;
   --table-header-background: #dadada;
   --table-header-background-hover: #d0d0d0;
   --table-row-alt-background: #e8e7e7;
   --table-row-background-hover: #e8e7df;
   --hr-color: #c5c5c5;
-  --nav-item-background-active: rgb(32 43 51 / 63%);
-  --nav-item-color-active: #fff;
+
+  /* Also used for expanded search results and inline file renaming. */
+  --nav-item-background-active: var(--background-modifier-active-hover);
+  --nav-item-color-active: var(--text-normal);
   --nav-item-weight-active: 700;
   --titlebar-background: var(--np-paper);
   --titlebar-background-focused: var(--np-paper);
@@ -318,12 +326,17 @@ body.theme-dark {
   --interactive-hover: #3e3c35;
   --interactive-accent: #8db8d0;
   --interactive-accent-hover: #b6d5e7;
+  --background-modifier-error: #eaa0a5;
+  --background-modifier-error-hover: #f2b4b9;
+  --background-modifier-success: #9dc6a3;
+  --text-error: #eaa0a5;
+  --text-success: #9dc6a3;
   --text-selection: rgb(141 184 208 / 25%);
   --text-highlight-bg: #5d5130;
   --blockquote-border-color: #736f63;
   --blockquote-color: #bbb6aa;
   --code-background: #36352f;
-  --code-comment: #999489;
+  --code-comment: #aaa598;
   --code-function: #8db8d0;
   --code-keyword: #c6a5b9;
   --code-string: #a8c39f;
@@ -334,13 +347,32 @@ body.theme-dark {
   --table-row-alt-background: #302f29;
   --table-row-background-hover: #34332d;
   --hr-color: #736f63;
-  --nav-item-background-active: #4b5960;
-  --nav-item-color-active: #fff;
+  --nav-item-background-active: var(--background-modifier-active-hover);
+  --nav-item-color-active: var(--text-normal);
   --titlebar-background: #252420;
   --titlebar-background-focused: #252420;
   --tab-container-background: #252420;
   --tab-background-active: #252420;
   --ribbon-background: #252420;
+}
+
+/* These native controls have neutral/transparent surfaces, not accent fills. */
+.file-tree .tree-item-flair,
+.tree-item-self.is-active .tree-item-flair,
+.sync-history-list-item-header .sync-history-list-item-avatar,
+.recent-vaults-list-item:hover {
+  color: var(--text-normal);
+}
+
+.sync-history-list-item .version-group-container .version-group-item.is-active .u-muted,
+.sync-history-list-item .version-group-container .version-group-item.is-active:hover .u-muted {
+  color: var(--nav-item-color-active);
+}
+
+.sync-history-list-item-header.is-active,
+.sync-history-list-item-header.is-active:hover,
+.sync-history-list-item-header.is-active .tree-item-flair:hover {
+  --nav-collapse-icon-color: var(--nav-item-color-active);
 }
 
 body .markdown-source-view.mod-cm6,
