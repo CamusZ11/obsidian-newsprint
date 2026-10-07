@@ -1,0 +1,12 @@
+{
+  "name": "newsprint-by-camus",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "stylelint theme.css"
+  },
+  "devDependencies": {
+    "stylelint": "^17.0.0",
+    "stylelint-config-obsidianmd": "^0.1.0"
+  }
+}
