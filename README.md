@@ -4,7 +4,7 @@
 
 A warm paper and serif theme for Obsidian, inspired by Typora Newsprint, with shared typography across Live Preview and Reading view.
 
-![Newsprint by Camus 主题概览](screenshots/screenshot.png)
+![Newsprint by Camus 主题概览](screenshots/cover.jpg)
 
 [下载最新版本](https://github.com/CamusZ11/obsidian-newsprint/releases/latest) · [反馈问题](https://github.com/CamusZ11/obsidian-newsprint/issues) · [段落辅助插件](https://github.com/CamusZ11/obsidian-newsprint-paragraphs)
 
