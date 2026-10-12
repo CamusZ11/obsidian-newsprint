@@ -70,6 +70,7 @@ A warm paper and serif theme for Obsidian, inspired by Typora Newsprint, with sh
 | 正文字号 | 16px | 同步调整实时预览与阅读视图 |
 | 正文行高 | 1.5 | 调整同一段落内的行距 |
 | 段落间距 | 字号的 1.5 倍 | 16px 正文对应 24px 段距 |
+| 列表项间距 | 字号的 0.5 倍 | 16px 正文对应 8px；有序、无序及常见嵌套列表共用 |
 | 正文最大宽度 | 40em | 大窗口默认扩展到 914px，可自行指定 |
 | 正文字体 | PT Serif + 系统中文宋体回退 | 调整中英文正文与界面字体 |
 | 浅色纸张 / 正文颜色 | `#f3f2ee` / `#1f0909` | 自定义浅色配色 |
@@ -117,6 +118,10 @@ PT Serif 的四种字形已随主题内嵌；中文字体依赖系统已有字�
 
 ## 更新记录
 
+### 1.0.3
+
+参照 Typora 列表项内段落的留白，默认列表项间距调整为字号的 0.5 倍（16px → 8px，20px → 10px），列表内部行高保持 1.5。阅读视图与实时预览共用参数，并新增 Style Settings 的「列表项间距」。已在 macOS / Obsidian 1.14.4 验证普通有序/无序列表、空行分隔项、列表类型切换、常见嵌套、任务项及续行后新建列表块，共 12 种样例；两模式测量差小于 0.01px。任意跨多段续行与混合深度列表不在本次完整验证范围内。
+
 ### 1.0.2
 
 修复浅色搜索结果出现白字的问题，并检查文件重命名、活动导航项、标签与计数、最近仓库、同步历史，以及深浅色中的错误 / 成功提示和弱化文本。字号、字体与段落间距保持不变。
@@ -125,7 +130,7 @@ PT Serif 的四种字形已随主题内嵌；中文字体依赖系统已有字�
 
 ## Development
 
-Run `pnpm install` and `pnpm run lint`. The configuration extends Obsidian's official Stylelint preset. Obsidian's built-in CodeMirror names are exempt from kebab-case; exact spacing ratios retain six decimal places. Mutually exclusive editor line variants have a scoped specificity exception. The preset reports 18 `:has()` performance advisories: these selectors are confined to Live Preview `.cm-line` children and immediate siblings, for parity without editing source. Long-note performance and mobile visual verification remain areas for follow-up.
+Run `pnpm install` and `pnpm run lint`. The configuration extends Obsidian's official Stylelint preset. Obsidian's built-in CodeMirror names are exempt from kebab-case; exact spacing ratios retain six decimal places. Mutually exclusive editor line variants have a scoped specificity exception. The preset reports 34 `:has()` performance advisories: these selectors are confined to Live Preview `.cm-line` children and immediate siblings, for parity without editing source. Long-note performance and mobile visual verification remain areas for follow-up.
 
 `scripts/check-contrast.js` evaluates to an async function accepting Obsidian's installed `app.css` and the release `theme.css` as strings. Run it in Obsidian DevTools. It checks 49 native text/color states in both light and dark modes against a 4.5:1 minimum, using a disposable iframe without user snippets or plugins. Hover/focus selectors are mirrored by test classes and animations are disabled for stable measurements; mobile-tap selectors are included, but this is not a mobile-device visual test. It removes the iframe and leaves the user's appearance unchanged.
 
