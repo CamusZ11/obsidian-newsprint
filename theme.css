@@ -144,6 +144,15 @@ settings:
     min: 0
     max: 1.5
     step: 0.1
+  - id: np-pinned-tab-width
+    title: 固定页签宽度
+    description: 保留图标、截短标题及固定标记；仅调整普通横向页签栏
+    type: variable-number-slider
+    default: 112
+    min: 88
+    max: 200
+    step: 8
+    format: px
   - id: np-column-width
     title: 正文最大宽度
     description: 原版为 40em；大窗口默认扩展到 914px
@@ -178,6 +187,7 @@ body {
   --np-h1-after: calc(var(--np-body-size) * 0.9375);
   --np-h23-after: calc(var(--np-body-size) * 0.984375);
   --np-h4-after: calc(var(--np-body-size) * 1.6875);
+  --np-pinned-tab-width: 112px;
   --np-column-width: 40em;
   --np-font: "Newsprint PT Serif", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
   --np-paper: #f3f2ee;
@@ -621,6 +631,16 @@ body .markdown-preview-view {
 .markdown-rendered hr {
   border: 0;
   border-bottom: 1px solid var(--hr-color);
+}
+
+/* Compact pinned documents without changing sidebar or stacked tabs. */
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) > .workspace-tab-header-container > .workspace-tab-header-container-inner > .workspace-tab-header:has(.workspace-tab-header-status-icon.mod-pinned) {
+  flex: 0 0 var(--np-pinned-tab-width);
+  max-width: var(--np-pinned-tab-width);
+}
+
+.workspace .mod-root .workspace-tabs:not(.mod-stacked) > .workspace-tab-header-container > .workspace-tab-header-container-inner > .workspace-tab-header:has(.workspace-tab-header-status-icon.mod-pinned) .workspace-tab-header-inner-icon {
+  display: flex;
 }
 
 .workspace-split.mod-left-split > .workspace-leaf-resize-handle,
