@@ -570,12 +570,23 @@ body .markdown-preview-view {
   padding-top: var(--np-paragraph-gap);
 }
 
+/* Use the normal paragraph gap at independent image lines inside top-level quotes. */
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote-1:not(.HyperMD-list-line, .HyperMD-header):has(> :is(.image-embed, .cm-quote:not(.cm-formatting-quote))) + .cm-line.HyperMD-quote-1:not(.HyperMD-list-line, .HyperMD-header):has(> .image-embed):not(:has(> .cm-quote:not(.cm-formatting-quote), > .cm-hmd-indent-in-quote)),
+.markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-quote-1:not(.HyperMD-list-line, .HyperMD-header):has(> .image-embed):not(:has(> .cm-quote:not(.cm-formatting-quote), > .cm-hmd-indent-in-quote)) + .cm-line.HyperMD-quote-1:not(.HyperMD-list-line, .HyperMD-header):has(> .cm-quote:not(.cm-formatting-quote)) {
+  padding-top: var(--np-paragraph-gap);
+}
+
 /* A properties widget may precede the first text line. */
 .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header-1:not(.cm-line ~ .cm-line) {
   padding-top: 0;
 }
 
 /* stylelint-enable no-descending-specificity */
+
+/* Match the editor's bottom alignment, without an extra descender gap. */
+.markdown-preview-view :is(.image-embed > img, p > img, .np-paragraph > img) {
+  vertical-align: bottom;
+}
 
 .markdown-rendered blockquote {
   margin-inline: 2em 0;

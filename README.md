@@ -97,7 +97,7 @@ PT Serif 的四种字形已随主题内嵌；中文字体依赖系统已有字�
 
 标准 Markdown 会将它们视为同一段的软换行。若希望每行都显示为独立段落，请另行安装 [Newsprint Paragraphs](https://github.com/CamusZ11/obsidian-newsprint-paragraphs)，主题安装不会自动安装该插件。
 
-辅助插件只调整顶层正文的显示，不改写笔记文件，不改变列表、引用、提示框、表格或代码。顶层正文的手动硬换行也会显示为段落；需要保留段内换行语义时，关闭辅助插件。
+辅助插件调整顶层正文的显示，并在顶层引用内的独立图片前后留出正文段距。它保留普通引用的换行，不改写笔记文件，也不改变列表、提示框、表格或代码。顶层正文的手动硬换行也会显示为段落；需要保留段内换行语义时，关闭辅助插件。
 
 ## 兼容性与常见问题
 
@@ -119,6 +119,10 @@ PT Serif 的四种字形已随主题内嵌；中文字体依赖系统已有字�
 
 ## 更新记录
 
+### 1.0.6
+
+对齐独立图片前后的留白，沿用正文段距（默认 24px）。修复阅读模式图片底部的额外基线空白，并为实时预览中的顶层引用独立图片补齐段距。引用内图片在阅读模式下的对应排版需搭配 Newsprint Paragraphs 1.0.2。已有空行不会重复加距，行内图片不另起一段。
+
 ### 1.0.5
 
 修复实时预览中顶层引用直接接列表时缺少留白的问题。间距沿用正文段距设置（默认 16px 正文对应 24px），与阅读模式一致；已有空行时不会重复加距。
@@ -139,7 +143,7 @@ PT Serif 的四种字形已随主题内嵌；中文字体依赖系统已有字�
 
 ## Development
 
-Run `pnpm install` and `pnpm run lint`. The configuration extends Obsidian's official Stylelint preset. Obsidian's built-in CodeMirror names are exempt from kebab-case; exact spacing ratios retain six decimal places. Mutually exclusive editor line variants have a scoped specificity exception. The preset reports 36 `:has()` performance advisories: these selectors are confined to Live Preview `.cm-line` children and immediate siblings, plus desktop pinned-tab status icons. They provide spacing parity and compact pinned tabs without editing note content. Long-note performance and mobile visual verification remain areas for follow-up.
+Run `pnpm install` and `pnpm run lint`. The configuration extends Obsidian's official Stylelint preset. Obsidian's built-in CodeMirror names are exempt from kebab-case; exact spacing ratios retain six decimal places. Mutually exclusive editor line variants have a scoped specificity exception. The preset reports 42 `:has()` performance advisories: these selectors are confined to Live Preview `.cm-line` children and immediate siblings, plus desktop pinned-tab status icons. They provide spacing parity and compact pinned tabs without editing note content. Long-note performance and mobile visual verification remain areas for follow-up.
 
 `scripts/check-contrast.js` evaluates to an async function accepting Obsidian's installed `app.css` and the release `theme.css` as strings. Run it in Obsidian DevTools. It checks 49 native text/color states in both light and dark modes against a 4.5:1 minimum, using a disposable iframe without user snippets or plugins. Hover/focus selectors are mirrored by test classes and animations are disabled for stable measurements; mobile-tap selectors are included, but this is not a mobile-device visual test. It removes the iframe and leaves the user's appearance unchanged.
 
